@@ -290,12 +290,6 @@ screenshots/
 └── edit-employee.png
 ```
 
-Example:
-
-![Login Page](screenshots/login.png)
-
-![Dashboard](screenshots/dashboard.png)
-
 ---
 
 ## 🎯 Key Learning & Implementation
