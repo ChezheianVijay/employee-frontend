@@ -1,70 +1,329 @@
-# Getting Started with Create React App
+# Employee Management System — Frontend Made with ❤️‍🔥 by Loki
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive **Employee Management System frontend** built with **React JS**, integrated with a Spring Boot REST API.
 
-## Available Scripts
+The application provides authentication, role-based UI, employee management, search with debounce, Redux state management, and responsive Bootstrap-based UI.
 
-In the project directory, you can run:
+## 🚀 Tech Stack
 
-### `npm start`
+* React JS
+* JavaScript (ES6+)
+* React Router DOM
+* Redux Toolkit
+* React Redux
+* Axios
+* Bootstrap 5
+* Custom CSS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔐 Authentication
 
-### `npm test`
+* Login page
+* JWT-based authentication
+* JWT token stored in localStorage
+* Redux authentication state
+* Automatic JWT attachment using Axios interceptor
+* Automatic redirect to login when token is unauthorized
+* Logout functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🛡️ Role-Based UI
 
-### `npm run build`
+#### USER
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* View employees
+* Search employees
+* Add/Edit/Delete buttons are hidden
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### ADMIN
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* View employees
+* Search employees
+* Add employee
+* Edit employee
+* Delete employee
 
-### `npm run eject`
+### 👨‍💼 Employee Management
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Employee list
+* Add employee
+* Edit employee
+* Delete employee
+* Employee search
+* Department selection
+* Salary display
+* Delete confirmation
+* Loading states
+* Error handling
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ⚡ React Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Functional components
+* React Hooks
+* React Router
+* Redux Toolkit
+* Axios
+* Axios request interceptor
+* Axios response interceptor
+* Debounce search
+* Dynamic route parameters
+* Protected API integration
+* localStorage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🎨 UI
 
-## Learn More
+* Bootstrap 5
+* Responsive layout
+* Responsive employee table
+* Clean login page
+* Dashboard layout
+* Custom CSS
+* Loading spinner
+* Alert messages
+* Mobile-friendly design
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🏗️ Folder Structure
 
-### Code Splitting
+```text
+src/
+│
+├── components/
+│
+├── pages/
+│   ├── Login.js
+│   ├── Dashboard.js
+│   └── EmployeeForm.js
+│
+├── redux/
+│   ├── store.js
+│   └── authSlice.js
+│
+├── services/
+│   └── api.js
+│
+├── utils/
+│   └── debounce.js
+│
+├── App.js
+├── index.js
+└── index.css
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔄 Application Flow
 
-### Analyzing the Bundle Size
+### Login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```text
+Login Page
+    ↓
+Axios
+    ↓
+Spring Boot REST API
+    ↓
+JWT Token
+    ↓
+Redux Store
+    ↓
+localStorage
+    ↓
+Dashboard
+```
 
-### Making a Progressive Web App
+### API Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```text
+React Component
+      ↓
+Axios
+      ↓
+Request Interceptor
+      ↓
+Bearer JWT Token
+      ↓
+Spring Boot REST API
+      ↓
+Response
+      ↓
+React UI
+```
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔍 Debounced Search
 
-### Deployment
+Employee search uses a custom debounce utility to avoid sending an API request for every keystroke.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```text
+User types
+    ↓
+Wait 500ms
+    ↓
+No new input?
+    ↓
+API request
+```
 
-### `npm run build` fails to minify
+This reduces unnecessary API calls and improves frontend performance.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🧭 Routes
+
+| Route                 | Page               | Access        |
+| --------------------- | ------------------ | ------------- |
+| `/login`              | Login              | Public        |
+| `/dashboard`          | Employee Dashboard | Authenticated |
+| `/employees/add`      | Add Employee       | ADMIN         |
+| `/employees/edit/:id` | Edit Employee      | ADMIN         |
+
+---
+
+## 🔌 API Configuration
+
+The frontend communicates with the Spring Boot backend through Axios.
+
+Default API URL:
+
+```text
+http://localhost:8080/api
+```
+
+Configured in:
+
+```text
+src/services/api.js
+```
+
+JWT authentication is automatically added to protected requests:
+
+```text
+Authorization: Bearer <JWT_TOKEN>
+```
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone <your-repository-url>
+```
+
+Navigate to the project:
+
+```bash
+cd employee-frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm start
+```
+
+Application runs at:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 🔗 Backend
+
+This frontend requires the Employee Management Spring Boot REST API to be running on:
+
+```text
+http://localhost:8080
+```
+
+Make sure the backend is started before testing login and employee operations.
+
+---
+
+## 🧪 User Roles
+
+### USER
+
+```text
+Login
+   ↓
+Dashboard
+   ↓
+View Employees
+   ↓
+Search Employees
+```
+
+### ADMIN
+
+```text
+Login
+   ↓
+Dashboard
+   ↓
+View Employees
+   ↓
+Add / Edit / Delete Employees
+```
+
+---
+
+## 📸 Screenshots
+
+Add project screenshots here:
+
+```text
+screenshots/
+├── login.png
+├── dashboard.png
+├── add-employee.png
+└── edit-employee.png
+```
+
+Example:
+
+![Login Page](screenshots/login.png)
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🎯 Key Learning & Implementation
+
+This project demonstrates practical implementation of:
+
+* React JS
+* JavaScript ES6+
+* React Hooks
+* React Router
+* Redux Toolkit
+* Axios
+* JWT authentication handling
+* Role-based UI rendering
+* REST API integration
+* Axios interceptors
+* Debouncing
+* localStorage
+* Responsive Bootstrap UI
+* CRUD interface
+* Form handling
+* Error handling
+* Loading states
+
+---
+
+## 👨‍💻 Author
+
+**Loki**
+
+Built with ❤️ using React JS.
